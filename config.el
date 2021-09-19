@@ -98,7 +98,8 @@
 (add-hook 'after-init-hook #'toggle-frame-maximized)
 
 ;; lsp settings
-(setq lsp-clients-clangd-executable "/opt/homebrew/opt/llvm/bin/clangd")
+(when (eq system-type 'darwin)
+    (setq lsp-clients-clangd-executable "/opt/homebrew/opt/llvm/bin/clangd"))
 (setq lsp-clients-clangd-args '("-j=3"
                                 "--background-index"
                                 "--clang-tidy"
