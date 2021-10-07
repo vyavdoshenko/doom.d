@@ -108,3 +108,4 @@
                                 "--header-insertion-decorators=0"))
 (after! lsp-clangd (set-lsp-priority! 'clangd 2))
 (set-eglot-client! 'cc-mode '("clangd" "-j=3" "--clang-tidy"))
+
