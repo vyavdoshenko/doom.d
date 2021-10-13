@@ -82,11 +82,11 @@
 
 ;; resizing windows
 (map! :leader
-      :desc "decrease width"
-      "<left>" #'evil-window-decrease-width)
-(map! :leader
       :desc "increase width"
-      "<right>" #'evil-window-increase-width)
+      "<left>" #'evil-window-increase-width)
+(map! :leader
+      :desc "decrease width"
+      "<right>" #'evil-window-decrease-width)
 (map! :leader
       :desc "increase height"
       "<up>" #'evil-window-increase-height)
@@ -101,11 +101,7 @@
 (when (eq system-type 'darwin)
     (setq lsp-clients-clangd-executable "/opt/homebrew/opt/llvm/bin/clangd"))
 (setq lsp-clients-clangd-args '("-j=3"
-                                "--background-index"
-                                "--clang-tidy"
-                                "--completion-style=detailed"
-                                "--header-insertion=never"
-                                "--header-insertion-decorators=0"))
+                                "--clang-tidy"))
 (after! lsp-clangd (set-lsp-priority! 'clangd 2))
 (set-eglot-client! 'cc-mode '("clangd" "-j=3" "--clang-tidy"))
 
