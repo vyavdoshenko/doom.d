@@ -59,40 +59,50 @@
 
 ;; neotree open/close
 (map! :leader
-      :desc "neotree toggle"
+      :desc "Neotree toggle"
       "o n" #'neotree-toggle)
 ;; vterm open
 (map! :leader
-      :desc "vterm toggle"
+      :desc "VTerm toggle"
       "o t" #'vterm)
 
 ;; switching windows
 (map! :leader
-      :desc "window left"
+      :desc "Window left"
       "w <left>" #'evil-window-left)
 (map! :leader
-      :desc "window right"
+      :desc "Window right"
       "w <right>" #'evil-window-right)
 (map! :leader
-      :desc "window up"
+      :desc "Window up"
       "w <up>" #'evil-window-up)
 (map! :leader
-      :desc "window down"
+      :desc "Window down"
       "w <down>" #'evil-window-down)
 
 ;; resizing windows
 (map! :leader
-      :desc "increase width"
+      :desc "Increase width"
       "<left>" #'evil-window-increase-width)
 (map! :leader
-      :desc "decrease width"
+      :desc "Decrease width"
       "<right>" #'evil-window-decrease-width)
 (map! :leader
-      :desc "increase height"
+      :desc "Increase height"
       "<up>" #'evil-window-increase-height)
 (map! :leader
-      :desc "decrease height"
+      :desc "Decrease height"
       "<down>" #'evil-window-decrease-height)
+
+;; tabs
+(map! :leader
+      :desc "Create new tab"
+      "n t" #'centaur-tabs--create-new-tab)
+
+;; org mode
+(map! :leader
+      :desc "Compile org mode file"
+      "c f" #'org-babel-tangle)
 
 ;; maximazed frame on startup
 (add-hook 'after-init-hook #'toggle-frame-maximized)
