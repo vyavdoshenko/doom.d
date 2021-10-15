@@ -53,17 +53,13 @@
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
 
-;; neotree settings
-(setq neo-window-width 45)
-(setq neo-window-fixed-size nil)
-
-;; neotree open/close
+;; treemacs open/close
 (map! :leader
-      :desc "Neotree toggle"
-      "o n" #'neotree-toggle)
+      :desc "treemacs toggle"
+      "o n" #'treemacs)
 ;; vterm open
 (map! :leader
-      :desc "VTerm toggle"
+      :desc "vterm toggle"
       "o t" #'vterm)
 
 ;; switching windows
@@ -96,7 +92,7 @@
 
 ;; tabs
 (map! :leader
-      :desc "Create new tab"
+      :desc "Create a new tab"
       "n t" #'centaur-tabs--create-new-tab)
 
 ;; org mode
