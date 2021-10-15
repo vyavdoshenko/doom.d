@@ -112,3 +112,4 @@
 (set-eglot-client! 'cc-mode '("clangd" "-j=3" "--clang-tidy"))
 
 (setq doom-theme 'doom-monokai-machine)
+(setq doom-themes-treemacs-theme "doom-colors")
