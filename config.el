@@ -109,3 +109,4 @@
 
 (setq doom-theme 'doom-monokai-machine)
 (setq doom-themes-treemacs-theme "doom-colors")
+
