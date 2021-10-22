@@ -96,17 +96,34 @@
       :desc "Compile org mode file"
       "c f" #'org-babel-tangle)
 
+;; switch header/cpp
+(map! :leader
+      :desc "Open other file. Like switching between h/cpp."
+      "f o" #'ff-find-other-file)
+
 ;; maximazed frame on startup
 (add-hook 'after-init-hook #'toggle-frame-maximized)
 
 ;; lsp settings
 (when (eq system-type 'darwin)
-    (setq lsp-clients-clangd-executable "/opt/homebrew/opt/llvm/bin/clangd"))
-(setq lsp-clients-clangd-args '("-j=3"
-                                "--clang-tidy"))
+    (setq exec-path (append exec-path '("/opt/homebrew/opt/llvm/bin"))))
+;    (setq lsp-clients-clangd-executable "/opt/homebrew/opt/llvm/bin/clangd"))
+(setq lsp-clients-clangd-args '("-j=3" "--clang-tidy"))
 (after! lsp-clangd (set-lsp-priority! 'clangd 2))
 (set-eglot-client! 'cc-mode '("clangd" "-j=3" "--clang-tidy"))
+;; override default cmake indentation to 4 spaces
+(setq cmake-tab-width 4)
 
+;; select theme and colors
 (setq doom-theme 'doom-monokai-machine)
 (setq doom-themes-treemacs-theme "doom-colors")
 
+; Unlike Vim, Emacs treats _ as a word separator. This is fix for that.
+; https://github.com/syl20bnr/spacemacs/issues/9740
+(with-eval-after-load 'evil (defalias #'forward-evil-word #'forward-evil-symbol))
+
+; turn off lsp code formatter
+(setq lsp-enable-on-type-formatting nil)
+; using clang-format
+(require 'clang-format)
+(add-hook 'c-mode-common-hook #'clang-format+-mode)
