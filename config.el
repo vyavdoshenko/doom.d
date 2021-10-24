@@ -115,7 +115,7 @@
 (setq cmake-tab-width 4)
 
 ;; select theme and colors
-(setq doom-theme 'doom-monokai-machine)
+(setq doom-theme 'doom-monokai-pro)
 (setq doom-themes-treemacs-theme "doom-colors")
 
 ; Unlike Vim, Emacs treats _ as a word separator. This is fix for that.
