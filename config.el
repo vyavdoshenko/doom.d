@@ -29,7 +29,7 @@
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
-(setq org-directory "~/org/")
+(setq org-directory "~/orgmode/")
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
@@ -96,11 +96,6 @@
       :desc "Compile org mode file"
       "c f" #'org-babel-tangle)
 
-;; switch header/cpp
-(map! :leader
-      :desc "Open other file. Like switching between h/cpp."
-      "f o" #'ff-find-other-file)
-
 ;; maximazed frame on startup
 (add-hook 'after-init-hook #'toggle-frame-maximized)
 
@@ -108,9 +103,18 @@
 (when (eq system-type 'darwin)
     (setq exec-path (append exec-path '("/opt/homebrew/opt/llvm/bin"))))
 ;    (setq lsp-clients-clangd-executable "/opt/homebrew/opt/llvm/bin/clangd"))
-(setq lsp-clients-clangd-args '("-j=3" "--clang-tidy"))
+(setq lsp-clients-clangd-args '("-j=7"
+                                "--fallback-style=Google"
+                                "--background-index"
+                                "--clang-tidy"
+                                "--completion-style=bundled"))
 (after! lsp-clangd (set-lsp-priority! 'clangd 2))
-(set-eglot-client! 'cc-mode '("clangd" "-j=3" "--clang-tidy"))
+(set-eglot-client! 'cc-mode '("clangd"
+                              "-j=7"
+                              "--fallback-style=Google"
+                              "--background-index"
+                              "--clang-tidy"
+                              "--completion-style=bundled"))
 ;; override default cmake indentation to 4 spaces
 (setq cmake-tab-width 4)
 
@@ -127,3 +131,12 @@
 ; using clang-format
 (require 'clang-format)
 (add-hook 'c-mode-common-hook #'clang-format+-mode)
+
+; disable annoying tips
+(setq lsp-ui-doc-enable nil)
+(setq lsp-ui-doc-show-with-cursor nil)
+(setq lsp-ui-doc-show-with-mouse nil)
+
+; treemacs + undo settings
+(after! undo-tree
+    (setq undo-tree-auto-save-history nil))
