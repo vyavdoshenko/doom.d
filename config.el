@@ -97,7 +97,8 @@
       "c f" #'org-babel-tangle)
 
 ;; maximazed frame on startup
-(add-hook 'after-init-hook #'toggle-frame-maximized)
+(add-to-list 'initial-frame-alist '(fullscreen . maximized))
+(add-to-list 'default-frame-alist '(fullscreen . fullheight))
 
 ;; lsp settings
 (when (eq system-type 'darwin)
