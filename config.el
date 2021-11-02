@@ -19,8 +19,8 @@
 ;;
 ;; They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
 ;; font string. You generally only need these two:
-(setq doom-font (font-spec :family "FiraCode NF" :size 15 :weight 'regular)
-      doom-variable-pitch-font (font-spec :family "SF Pro Text" :size 12))
+(setq doom-font (font-spec :family "FiraCode NF" :size 15 :weight 'light)
+      doom-variable-pitch-font (font-spec :family "SF Pro Rounded" :size 13 :weight 'thin))
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
@@ -34,7 +34,6 @@
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
 (setq display-line-numbers-type t)
-
 
 ;; Here are some additional functions/macros that could help you configure Doom:
 ;;
@@ -140,3 +139,4 @@
 ; treemacs + undo settings
 (after! undo-tree
     (setq undo-tree-auto-save-history nil))
+
