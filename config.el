@@ -19,13 +19,13 @@
 ;;
 ;; They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
 ;; font string. You generally only need these two:
-(setq doom-font (font-spec :family "FiraCode NF" :size 14 :weight 'regular)
+(setq doom-font (font-spec :family "FiraCode NF" :size 15 :weight 'regular)
       doom-variable-pitch-font (font-spec :family "SF Pro Text" :size 12))
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq doom-theme 'doom-one)
+;(setq doom-theme 'doom-one)
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
@@ -103,7 +103,6 @@
 ;; lsp settings
 (when (eq system-type 'darwin)
     (setq exec-path (append exec-path '("/opt/homebrew/opt/llvm/bin"))))
-;    (setq lsp-clients-clangd-executable "/opt/homebrew/opt/llvm/bin/clangd"))
 (setq lsp-clients-clangd-args '("-j=7"
                                 "--fallback-style=Google"
                                 "--background-index"
