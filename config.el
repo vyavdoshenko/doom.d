@@ -120,12 +120,6 @@
 ; https://github.com/syl20bnr/spacemacs/issues/9740
 (with-eval-after-load 'evil (defalias #'forward-evil-word #'forward-evil-symbol))
 
-; turn off lsp code formatter
-(setq lsp-enable-on-type-formatting nil)
-; using clang-format
-(require 'clang-format)
-(add-hook 'c-mode-common-hook #'clang-format+-mode)
-
 ; disable annoying tips
 (setq lsp-ui-doc-enable nil)
 (setq lsp-ui-doc-show-with-cursor nil)
