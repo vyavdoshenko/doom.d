@@ -120,12 +120,9 @@
 ; https://github.com/syl20bnr/spacemacs/issues/9740
 (with-eval-after-load 'evil (defalias #'forward-evil-word #'forward-evil-symbol))
 
-
 ; turn off lsp code formatter
+(setq +format-with-lsp nil)
 (setq lsp-enable-on-type-formatting nil)
-; using clang-format
-(require 'clang-format)
-(add-hook 'c-mode-common-hook #'clang-format+-mode)
 
 ; disable annoying tips
 (setq lsp-ui-doc-enable nil)
@@ -136,3 +133,9 @@
 (after! undo-tree
     (setq undo-tree-auto-save-history nil))
 
+(setq +format-on-save-enabled-modes
+      '(not emacs-lisp-mode  ; elisp's mechanisms are good enough
+            sql-mode         ; sqlformat is currently broken
+            tex-mode         ; latexindent is broken
+            latex-mode
+            cmake-mode))
