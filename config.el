@@ -133,9 +133,15 @@
 (after! undo-tree
     (setq undo-tree-auto-save-history nil))
 
+; format settings
 (setq +format-on-save-enabled-modes
       '(not emacs-lisp-mode  ; elisp's mechanisms are good enough
             sql-mode         ; sqlformat is currently broken
             tex-mode         ; latexindent is broken
             latex-mode
-            cmake-mode))
+            cmake-mode
+            nxml-mode))
+
+; whitespace settings
+(global-whitespace-mode +1)
+(setq-default tab-width 4)
