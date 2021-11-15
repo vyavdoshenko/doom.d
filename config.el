@@ -84,6 +84,12 @@
 (map! :leader
       :desc "Create a new tab"
       "n t" #'centaur-tabs--create-new-tab)
+(map! "S-<left>"
+      :desc "Move tab left"
+      #'centaur-tabs-move-current-tab-to-left)
+(map! "S-<right>"
+      :desc "Move tab right"
+      #'centaur-tabs-move-current-tab-to-right)
 
 ;; org mode
 (map! :leader
