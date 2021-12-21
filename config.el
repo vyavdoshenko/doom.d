@@ -151,3 +151,9 @@
 ; whitespace settings
 (global-whitespace-mode +1)
 (setq-default tab-width 4)
+
+(defun my-c-hook ()
+  (setq fill-column 140))
+
+(add-hook 'c-mode-hook 'my-c-hook)
+(add-hook 'c++-mode-hook 'my-c-hook)
