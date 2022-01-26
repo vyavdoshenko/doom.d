@@ -20,7 +20,7 @@
 ;; They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
 ;; font string. You generally only need these two:
 (setq doom-font (font-spec :family "FiraCode NF" :size 15 :weight 'light))
-(setq doom-variable-pitch-font (font-spec :family "FiraCode NF" :size 13 :weight 'extra-light))
+(setq doom-variable-pitch-font (font-spec :family "Noto Sans" :size 12 :weight 'extra-light))
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
@@ -81,20 +81,12 @@
       "<down>" #'evil-window-decrease-height)
 
 ;; tabs
-(map! :leader
-      :desc "Create a new tab"
-      "n t" #'centaur-tabs--create-new-tab)
 (map! "S-<left>"
       :desc "Move tab left"
       #'centaur-tabs-move-current-tab-to-left)
 (map! "S-<right>"
       :desc "Move tab right"
       #'centaur-tabs-move-current-tab-to-right)
-
-;; org mode
-(map! :leader
-      :desc "Compile org mode file"
-      "c f" #'org-babel-tangle)
 
 ;; maximazed frame on startup
 (add-to-list 'initial-frame-alist '(fullscreen . maximized))
@@ -152,9 +144,9 @@
 (global-whitespace-mode +1)
 (setq-default tab-width 4)
 
-(defun my-c-hook ()
+(defun column-hook()
   (setq fill-column 140))
 
-(add-hook 'c-mode-hook 'my-c-hook)
-(add-hook 'c++-mode-hook 'my-c-hook)
-
+(add-hook 'c-mode-hook 'column-hook)
+(add-hook 'c++-mode-hook 'column-hook)
+(add-hook 'cmake-mode-hook 'column-hook)
