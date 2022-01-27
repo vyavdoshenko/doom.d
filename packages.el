@@ -50,3 +50,4 @@
 ;(unpin! t)
 
 (package! jenkinsfile-mode)
+(package! go-translate)

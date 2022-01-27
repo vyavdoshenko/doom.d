@@ -154,3 +154,12 @@
 ; mouse horisontal scroll
 (setq mouse-wheel-tilt-scroll t)
 (setq mouse-wheel-flip-direction t)
+
+;; use M-x gts-do-translate
+(require 'go-translate)
+  (setq gts-translate-list '(("en" "ru")))
+  (setq gts-default-translator
+       (gts-translator
+        :picker (gts-prompt-picker)
+        :engines (list (gts-google-engine))
+        :render (gts-buffer-render)))
