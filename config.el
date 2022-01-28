@@ -99,14 +99,16 @@
                                 "--fallback-style=Google"
                                 "--background-index"
                                 "--clang-tidy"
-                                "--completion-style=bundled"))
+                                "--completion-style=bundled"
+                                "--suggest-missing-includes"))
 (after! lsp-clangd (set-lsp-priority! 'clangd 2))
 (set-eglot-client! 'cc-mode '("clangd"
                               "-j=7"
                               "--fallback-style=Google"
                               "--background-index"
                               "--clang-tidy"
-                              "--completion-style=bundled"))
+                              "--completion-style=bundled"
+                              "--suggest-missing-includes"))
 ;; override default cmake indentation to 4 spaces
 (setq cmake-tab-width 4)
 
