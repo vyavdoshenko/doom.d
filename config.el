@@ -94,7 +94,7 @@
 
 ;; lsp settings
 (when (eq system-type 'darwin)
-    (setq exec-path (append exec-path '("/opt/homebrew/opt/llvm/bin"))))
+  (setq exec-path (append exec-path '("/opt/homebrew/opt/llvm/bin"))))
 (setq lsp-clients-clangd-args '("-j=7"
                                 "--fallback-style=Google"
                                 "--background-index"
@@ -131,20 +131,20 @@
 
 ; treemacs + undo settings
 (after! undo-tree
-    (setq undo-tree-auto-save-history nil))
+  (setq undo-tree-auto-save-history nil))
 
 ; format settings
 (setq +format-on-save-enabled-modes
-      '(not emacs-lisp-mode  ; elisp's mechanisms are good enough
-            sql-mode         ; sqlformat is currently broken
-            tex-mode         ; latexindent is broken
-            latex-mode
-            cmake-mode
-            nxml-mode))
+  '(not emacs-lisp-mode  ; elisp's mechanisms are good enough
+        sql-mode         ; sqlformat is currently broken
+        tex-mode         ; latexindent is broken
+        latex-mode
+        cmake-mode
+        nxml-mode))
 
 ; whitespace settings
 (global-whitespace-mode +1)
-(setq-default tab-width 4)
+  (setq-default tab-width 4)
 
 (defun column-hook()
   (setq fill-column 140))
@@ -161,7 +161,12 @@
 (require 'go-translate)
   (setq gts-translate-list '(("en" "ru")))
   (setq gts-default-translator
-       (gts-translator
-        :picker (gts-prompt-picker)
-        :engines (list (gts-google-engine))
-        :render (gts-buffer-render)))
+    (gts-translator
+      :picker (gts-prompt-picker)
+      :engines (list (gts-google-engine))
+      :render (gts-buffer-render)))
+
+;; dart/flutter setup
+(with-eval-after-load 'projectile
+  (add-to-list 'projectile-project-root-files-bottom-up "pubspec.yaml")
+  (add-to-list 'projectile-project-root-files-bottom-up "BUILD"))
