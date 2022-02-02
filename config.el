@@ -116,24 +116,24 @@
 (setq doom-theme 'doom-monokai-classic)
 (setq doom-themes-treemacs-theme "doom-colors")
 
-; Unlike Vim, Emacs treats _ as a word separator. This is fix for that.
-; https://github.com/syl20bnr/spacemacs/issues/9740
+;; Unlike Vim, Emacs treats _ as a word separator. This is fix for that.
+;; https://github.com/syl20bnr/spacemacs/issues/9740
 (with-eval-after-load 'evil (defalias #'forward-evil-word #'forward-evil-symbol))
 
-; turn off lsp code formatter
+;; turn off lsp code formatter
 (setq +format-with-lsp nil)
 (setq lsp-enable-on-type-formatting nil)
 
-; disable annoying tips
+;; disable annoying tips
 (setq lsp-ui-doc-enable nil)
 (setq lsp-ui-doc-show-with-cursor nil)
 (setq lsp-ui-doc-show-with-mouse nil)
 
-; treemacs + undo settings
+;; treemacs + undo settings
 (after! undo-tree
   (setq undo-tree-auto-save-history nil))
 
-; format settings
+;; format settings
 (setq +format-on-save-enabled-modes
   '(not emacs-lisp-mode  ; elisp's mechanisms are good enough
         sql-mode         ; sqlformat is currently broken
@@ -142,7 +142,7 @@
         cmake-mode
         nxml-mode))
 
-; whitespace settings
+;; whitespace settings
 (global-whitespace-mode +1)
   (setq-default tab-width 4)
 
@@ -153,7 +153,7 @@
 (add-hook 'c++-mode-hook 'column-hook)
 (add-hook 'cmake-mode-hook 'column-hook)
 
-; mouse horisontal scroll
+;; mouse horisontal scroll
 (setq mouse-wheel-tilt-scroll t)
 (setq mouse-wheel-flip-direction t)
 
@@ -167,6 +167,6 @@
       :render (gts-buffer-render)))
 
 ;; dart/flutter setup
-(with-eval-after-load 'projectile
-  (add-to-list 'projectile-project-root-files-bottom-up "pubspec.yaml")
-  (add-to-list 'projectile-project-root-files-bottom-up "BUILD"))
+;;(with-eval-after-load 'projectile
+;;  (add-to-list 'projectile-project-root-files-bottom-up "pubspec.yaml")
+;;  (add-to-list 'projectile-project-root-files-bottom-up "BUILD"))
