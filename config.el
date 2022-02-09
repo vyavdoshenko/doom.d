@@ -19,8 +19,12 @@
 ;;
 ;; They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
 ;; font string. You generally only need these two:
-(setq doom-font (font-spec :family "FiraCode NF" :size 15 :weight 'light))
-(setq doom-variable-pitch-font (font-spec :family "Noto Sans" :size 12 :weight 'extra-light))
+(setq doom-font (font-spec :family "FiraCode" :size 28 :weight 'light))
+(setq doom-variable-pitch-font (font-spec :family "Noto Sans" :size 20 :weight 'extra-light))
+
+(when (eq system-type 'darwin)
+  (setq doom-font (font-spec :family "FiraCode NF" :size 14 :weight 'light))
+  (setq doom-variable-pitch-font (font-spec :family "Noto Sans" :size 10 :weight 'extra-light)))
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
