@@ -23,8 +23,8 @@
 (setq doom-variable-pitch-font (font-spec :family "Noto Sans" :size 20 :weight 'extra-light))
 
 (when (eq system-type 'darwin)
-  (setq doom-font (font-spec :family "Fira Code" :size 14 :weight 'light))
-  (setq doom-variable-pitch-font (font-spec :family "Noto Sans" :size 10 :weight 'extra-light)))
+  (setq doom-font (font-spec :family "Fira Code" :size 15 :weight 'light))
+  (setq doom-variable-pitch-font (font-spec :family "Noto Sans" :size 12 :weight 'extra-light)))
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
