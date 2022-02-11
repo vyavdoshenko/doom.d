@@ -56,6 +56,9 @@
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
 
+(set-language-environment "UTF-8")
+(set-default-coding-systems 'utf-8)
+
 ;; switching windows
 (map! :leader
       :desc "Window left"
