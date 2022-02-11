@@ -19,8 +19,8 @@
 ;;
 ;; They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
 ;; font string. You generally only need these two:
-(setq doom-font (font-spec :family "FiraCode" :size 28 :weight 'light))
-(setq doom-variable-pitch-font (font-spec :family "Noto Sans" :size 20 :weight 'extra-light))
+(setq doom-font (font-spec :family "FiraCode" :size 30 :weight 'light))
+(setq doom-variable-pitch-font (font-spec :family "Noto Sans" :size 24 :weight 'extra-light))
 
 (when (eq system-type 'darwin)
   (setq doom-font (font-spec :family "Fira Code" :size 15 :weight 'light))
@@ -171,6 +171,6 @@
       :render (gts-buffer-render)))
 
 ;; dart/flutter setup
-;;(with-eval-after-load 'projectile
-;;  (add-to-list 'projectile-project-root-files-bottom-up "pubspec.yaml")
-;;  (add-to-list 'projectile-project-root-files-bottom-up "BUILD"))
+(with-eval-after-load 'projectile
+  (add-to-list 'projectile-project-root-files-bottom-up "pubspec.yaml")
+  (add-to-list 'projectile-project-root-files-bottom-up "BUILD"))
