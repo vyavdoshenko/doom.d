@@ -19,7 +19,7 @@
 ;;
 ;; They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
 ;; font string. You generally only need these two:
-(setq doom-font (font-spec :family "FiraCode" :size 30 :weight 'light))
+(setq doom-font (font-spec :family "Fira Code" :size 30 :weight 'light))
 (setq doom-variable-pitch-font (font-spec :family "Noto Sans" :size 24 :weight 'extra-light))
 
 (when (eq system-type 'darwin)
