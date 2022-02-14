@@ -142,11 +142,7 @@
 
 ;; format settings
 (setq +format-on-save-enabled-modes
-  '(not emacs-lisp-mode  ; elisp's mechanisms are good enough
-        sql-mode         ; sqlformat is currently broken
-        tex-mode         ; latexindent is broken
-        latex-mode
-        cmake-mode
+  '(not cmake-mode
         nxml-mode))
 
 ;; whitespace settings
@@ -180,3 +176,8 @@
                                     :configure "cmake --preset rs"
                                     :compile "cmake --build --preset rs -j7"
                                     :test "cmake --test --preset rs -j7"))
+
+(setq c-default-style "user")
+; disable indenting namespaces
+; https://brrian.tumblr.com/post/9018043954/emacs-fu-dont-indent-inside-of-c-namespaces
+(c-set-offset 'innamespace 0)
