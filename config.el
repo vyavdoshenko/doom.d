@@ -151,6 +151,14 @@
 
 (setq-default fill-column 140)
 
+(defun column-hook()
+  (setq fill-column 140))
+
+(add-hook 'c-mode-hook 'column-hook)
+(add-hook 'c++-mode-hook 'column-hook)
+(add-hook 'cmake-mode-hook 'column-hook)
+(add-hook 'dart-mode-hook 'column-hook)
+
 ;; mouse horisontal scroll
 (setq mouse-wheel-tilt-scroll t)
 (setq mouse-wheel-flip-direction t)
