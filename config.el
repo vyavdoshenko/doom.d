@@ -172,4 +172,11 @@
 (with-eval-after-load 'projectile
   (add-to-list 'projectile-project-root-files-bottom-up "pubspec.yaml")
   (add-to-list 'projectile-project-root-files-bottom-up "BUILD")
-  (add-to-list 'projectile-project-root-files-bottom-up ".clang-format"))
+  (add-to-list 'projectile-project-root-files-bottom-up "CMakeUserPresets.json"))
+
+(after! projectile
+  (projectile-register-project-type 'cmake '("CMakeUserPreset.json")
+                                    :project-file "CMakeUserPresets.json"
+                                    :configure "cmake --preset rs"
+                                    :compile "cmake --build --preset rs -j7"
+                                    :test "cmake --test --preset rs -j7"))
