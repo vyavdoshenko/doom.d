@@ -3,10 +3,9 @@
 ;; Place your private configuration here! Remember, you do not need to run 'doom
 ;; sync' after modifying this file!
 
-
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets.
-(setq user-full-name "Vladimir Yavdoshenko"
+(setq user-full-name "Volodymyr Yavdoshenko"
       user-mail-address "v.yavdoshenko@gmail.com")
 
 ;; Doom exposes five (optional) variables for controlling fonts in Doom. Here
@@ -23,8 +22,8 @@
 (setq doom-variable-pitch-font (font-spec :family "Noto Sans" :size 24 :weight 'extra-light))
 
 (when (eq system-type 'darwin)
-  (setq doom-font (font-spec :family "Fira Code" :size 15 :weight 'light))
-  (setq doom-variable-pitch-font (font-spec :family "Noto Sans" :size 12 :weight 'extra-light)))
+  (setq doom-font (font-spec :family "FiraCode Nerd Font" :size 18 :weight 'light))
+  (setq doom-variable-pitch-font (font-spec :family "Noto Sans" :size 14 :weight 'extra-light)))
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
@@ -102,20 +101,7 @@
 ;; lsp settings
 (when (eq system-type 'darwin)
   (setq exec-path (append exec-path '("/opt/homebrew/opt/llvm/bin"))))
-(setq lsp-clients-clangd-args '("-j=7"
-                                "--fallback-style=Google"
-                                "--background-index"
-                                "--clang-tidy"
-                                "--completion-style=bundled"
-                                "--suggest-missing-includes"))
-(after! lsp-clangd (set-lsp-priority! 'clangd 2))
-(set-eglot-client! 'cc-mode '("clangd"
-                              "-j=7"
-                              "--fallback-style=Google"
-                              "--background-index"
-                              "--clang-tidy"
-                              "--completion-style=bundled"
-                              "--suggest-missing-includes"))
+
 ;; override default cmake indentation to 4 spaces
 (setq cmake-tab-width 4)
 
@@ -127,23 +113,9 @@
 ;; https://github.com/syl20bnr/spacemacs/issues/9740
 (with-eval-after-load 'evil (defalias #'forward-evil-word #'forward-evil-symbol))
 
-;; turn off lsp code formatter
-(setq +format-with-lsp nil)
-(setq lsp-enable-on-type-formatting nil)
-
-;; disable annoying tips
-(setq lsp-ui-doc-enable nil)
-(setq lsp-ui-doc-show-with-cursor nil)
-(setq lsp-ui-doc-show-with-mouse nil)
-
 ;; treemacs + undo settings
 (after! undo-tree
   (setq undo-tree-auto-save-history nil))
-
-;; format settings
-(setq +format-on-save-enabled-modes
-  '(not cmake-mode
-        nxml-mode))
 
 ;; whitespace settings
 (global-whitespace-mode +1)
@@ -154,8 +126,7 @@
 (defun column-hook()
   (setq fill-column 140))
 
-(add-hook 'c-mode-hook 'column-hook)
-(add-hook 'c++-mode-hook 'column-hook)
+(add-hook 'rust-mode-hook 'column-hook)
 (add-hook 'cmake-mode-hook 'column-hook)
 (add-hook 'dart-mode-hook 'column-hook)
 
@@ -175,17 +146,11 @@
 ;; dart/flutter setup
 (with-eval-after-load 'projectile
   (add-to-list 'projectile-project-root-files-bottom-up "pubspec.yaml")
-  (add-to-list 'projectile-project-root-files-bottom-up "BUILD")
-  (add-to-list 'projectile-project-root-files-bottom-up "CMakeUserPresets.json"))
+  (add-to-list 'projectile-project-root-files-bottom-up "BUILD"))
 
-(after! projectile
-  (projectile-register-project-type 'cmake '("CMakeUserPreset.json")
-                                    :project-file "CMakeUserPresets.json"
-                                    :configure "cmake --preset rs"
-                                    :compile "cmake --build --preset rs -j7"
-                                    :test "cmake --test --preset rs -j7"))
+; enable rls
+(after! rustic
+  (setq rustic-lsp-server 'rls))
 
-(setq c-default-style "user")
-; disable indenting namespaces
-; https://brrian.tumblr.com/post/9018043954/emacs-fu-dont-indent-inside-of-c-namespaces
-(c-set-offset 'innamespace 0)
+(add-hook 'before-save-hook (lambda () (when (eq 'rust-mode major-mode)
+                                           (lsp-format-buffer))))
