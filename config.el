@@ -145,8 +145,7 @@
 
 ;; dart/flutter setup
 (with-eval-after-load 'projectile
-  (add-to-list 'projectile-project-root-files-bottom-up "pubspec.yaml")
-  (add-to-list 'projectile-project-root-files-bottom-up "BUILD"))
+  (add-to-list 'projectile-project-root-files-bottom-up ".gitlab-ci.yml"))
 
 ; enable rls
 (after! rustic
