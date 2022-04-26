@@ -128,7 +128,6 @@
 
 (add-hook 'rust-mode-hook 'column-hook)
 (add-hook 'cmake-mode-hook 'column-hook)
-(add-hook 'dart-mode-hook 'column-hook)
 
 ;; mouse horisontal scroll
 (setq mouse-wheel-tilt-scroll t)
@@ -143,13 +142,10 @@
       :engines (list (gts-google-engine))
       :render (gts-buffer-render)))
 
-;; dart/flutter setup
-(with-eval-after-load 'projectile
-  (add-to-list 'projectile-project-root-files-bottom-up ".gitlab-ci.yml"))
-
 ; enable rls
 (after! rustic
   (setq rustic-lsp-server 'rls))
 
 (add-hook 'before-save-hook (lambda () (when (eq 'rust-mode major-mode)
                                            (lsp-format-buffer))))
+
