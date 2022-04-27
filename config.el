@@ -22,8 +22,8 @@
 (setq doom-variable-pitch-font (font-spec :family "Noto Sans" :size 24 :weight 'extra-light))
 
 (when (eq system-type 'darwin)
-  (setq doom-font (font-spec :family "FiraCode Nerd Font" :size 18 :weight 'light))
-  (setq doom-variable-pitch-font (font-spec :family "Noto Sans" :size 14 :weight 'extra-light)))
+  (setq doom-font (font-spec :family "FiraCode Nerd Font" :size 17 :weight 'light))
+  (setq doom-variable-pitch-font (font-spec :family "Noto Sans" :size 13 :weight 'extra-light)))
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
@@ -85,14 +85,6 @@
 (map! :leader
       :desc "Decrease height"
       "<down>" #'evil-window-decrease-height)
-
-;; tabs
-(map! "S-<left>"
-      :desc "Move tab left"
-      #'centaur-tabs-move-current-tab-to-left)
-(map! "S-<right>"
-      :desc "Move tab right"
-      #'centaur-tabs-move-current-tab-to-right)
 
 ;; maximazed frame on startup
 (add-to-list 'initial-frame-alist '(fullscreen . maximized))
