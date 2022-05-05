@@ -157,9 +157,10 @@
       :engines (list (gts-google-engine))
       :render (gts-buffer-render)))
 
-; enable rls
+; enable rls and format
 (after! rustic
-  (setq rustic-lsp-server 'rls))
+  (setq rustic-lsp-server 'rls)
+  (setq rustic-format-on-save t))
 
 (add-hook 'before-save-hook (lambda () (when (eq 'rust-mode major-mode)
                                            (lsp-format-buffer))))
