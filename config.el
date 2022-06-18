@@ -102,6 +102,7 @@
       "w <down>" #'evil-window-down)
 
 ;; resizing windows
+(setq treemacs-width-is-initially-locked nil)
 (map! :leader
       :desc "Increase width"
       "<left>" #'evil-window-increase-width)
@@ -114,6 +115,10 @@
 (map! :leader
       :desc "Decrease height"
       "<down>" #'evil-window-decrease-height)
+(map!
+      "s-," #'evil-window-increase-width
+      "s-." #'evil-window-decrease-width
+      )
 
 ;; maximazed frame on startup
 (add-to-list 'initial-frame-alist '(fullscreen . maximized))
@@ -152,7 +157,7 @@
 
 ;; use M-x gts-do-translate
 (require 'go-translate)
-  (setq gts-translate-list '(("en" "ru")))
+  (setq gts-translate-list '(("en" "uk")))
   (setq gts-default-translator
     (gts-translator
       :picker (gts-prompt-picker)
