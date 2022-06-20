@@ -171,3 +171,6 @@
 
 (add-hook 'before-save-hook (lambda () (when (eq 'rust-mode major-mode)
                                            (lsp-format-buffer))))
+
+; fing ripgrep package
+(require 'rg)
