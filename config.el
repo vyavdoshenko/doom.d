@@ -167,10 +167,12 @@
 ; enable rls and format
 (after! rustic
   (setq rustic-lsp-server 'rls)
-  (setq rustic-format-on-save t))
+  (setq rustic-format-on-save t)
+  (setq rustic-rustfmt-args "--edition 2021"))
 
 (add-hook 'before-save-hook (lambda () (when (eq 'rust-mode major-mode)
                                            (lsp-format-buffer))))
 
-; fing ripgrep package
+; find ripgrep package
 (require 'rg)
+
