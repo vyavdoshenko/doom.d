@@ -50,3 +50,4 @@
 ;(unpin! t)
 
 (package! go-translate)
+(package! rg)
