@@ -28,11 +28,11 @@
 ;; up, `M-x eval-region' to execute elisp code, and 'M-x doom/reload-font' to
 ;; refresh your font settings. If Emacs still can't find your font, it likely
 ;; wasn't installed correctly. Font issues are rarely Doom issues!
-(setq doom-font (font-spec :family "Fira Code" :size 28 :weight 'light))
+(setq doom-font (font-spec :family "Fira Code" :size 36 :weight 'light))
 (setq doom-variable-pitch-font (font-spec :family "Noto Sans" :size 26 :weight 'extra-light))
 
 (when (eq system-type 'darwin)
-  (setq doom-font (font-spec :family "Fira Code" :size 14 :weight 'light))
+  (setq doom-font (font-spec :family "Fira Code" :size 18 :weight 'light))
   (setq doom-variable-pitch-font (font-spec :family "Noto Sans" :size 13 :weight 'extra-light)))
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
@@ -146,7 +146,6 @@
 (defun column-hook()
   (setq fill-column 140))
 
-(add-hook 'rust-mode-hook 'column-hook)
 (add-hook 'cmake-mode-hook 'column-hook)
 
 ;; mouse horisontal scroll
@@ -162,12 +161,4 @@
       :engines (list (gts-google-engine))
       :render (gts-buffer-render)))
 
-; enable rls and format
-(after! rustic
-  (setq rustic-lsp-server 'rls)
-  (setq rustic-format-on-save t)
-  (setq rustic-rustfmt-args "--edition 2021"))
-
-(add-hook 'before-save-hook (lambda () (when (eq 'rust-mode major-mode)
-                                           (lsp-format-buffer))))
-
+(projectile-add-known-project "~/english")
