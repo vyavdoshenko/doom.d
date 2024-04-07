@@ -28,11 +28,11 @@
 ;; up, `M-x eval-region' to execute elisp code, and 'M-x doom/reload-font' to
 ;; refresh your font settings. If Emacs still can't find your font, it likely
 ;; wasn't installed correctly. Font issues are rarely Doom issues!
-(setq doom-font (font-spec :family "Fira Code" :size 36 :weight 'light))
+(setq doom-font (font-spec :family "Fira Code" :size 40 :weight 'light))
 (setq doom-variable-pitch-font (font-spec :family "Noto Sans" :size 26 :weight 'extra-light))
 
 (when (eq system-type 'darwin)
-  (setq doom-font (font-spec :family "Fira Code" :size 18 :weight 'light))
+  (setq doom-font (font-spec :family "Fira Code" :size 20 :weight 'light))
   (setq doom-variable-pitch-font (font-spec :family "Noto Sans" :size 13 :weight 'extra-light)))
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
@@ -141,24 +141,15 @@
 (global-whitespace-mode +1)
   (setq-default tab-width 4)
 
-(setq-default fill-column 140)
+(setq-default fill-column 160)
 
 (defun column-hook()
-  (setq fill-column 140))
+  (setq fill-column 160))
 
 (add-hook 'cmake-mode-hook 'column-hook)
 
 ;; mouse horisontal scroll
 (setq mouse-wheel-tilt-scroll t)
 (setq mouse-wheel-flip-direction t)
-
-;; use M-x gts-do-translate
-(require 'go-translate)
-  (setq gts-translate-list '(("en" "uk")))
-  (setq gts-default-translator
-    (gts-translator
-      :picker (gts-prompt-picker)
-      :engines (list (gts-google-engine))
-      :render (gts-buffer-render)))
 
 (projectile-add-known-project "~/english")
