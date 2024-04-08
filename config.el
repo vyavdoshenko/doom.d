@@ -141,10 +141,10 @@
 (global-whitespace-mode +1)
   (setq-default tab-width 4)
 
-(setq-default fill-column 160)
+(setq-default fill-column 1600)
 
 (defun column-hook()
-  (setq fill-column 160))
+  (setq fill-column 1600))
 
 (add-hook 'cmake-mode-hook 'column-hook)
 
