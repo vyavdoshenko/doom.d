@@ -153,3 +153,4 @@
 (setq mouse-wheel-flip-direction t)
 
 (projectile-add-known-project "~/english")
+(projectile-add-known-project "~/orgmode")
